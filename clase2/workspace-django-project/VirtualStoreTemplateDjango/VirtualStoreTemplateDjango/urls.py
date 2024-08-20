@@ -1,5 +1,5 @@
 """
-URL configuration for VirtualStoreDjango project.
+URL configuration for VirtualStoreTemplateDjango project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -16,13 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from firstapp.views import display_saludar
-from firstapp.views import display_date
-from secondapp.views import saludo
+
+from firstappTemplate.views import infoUsuario, renderTemplate, rendertemplateData
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('saludar', display_saludar),
-    path('mostrar-fecha/', display_date),
-    path('saludar-second-app/', saludo)
-]
+    path('render/', renderTemplate),
+    path('renderdata/', rendertemplateData),
+    path('info/', infoUsuario)
+    ]
