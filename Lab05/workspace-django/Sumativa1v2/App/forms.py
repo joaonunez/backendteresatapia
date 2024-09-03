@@ -1,5 +1,6 @@
 from django import forms
-from models import Reserva, EstadReserva, TipoReserva
+from .models import Reserva, EstadReserva, TipoReserva
+
 
 class ReservaForm(forms.ModelForm):
     class Meta:
@@ -12,14 +13,14 @@ class ReservaForm(forms.ModelForm):
             ('confirmado','CONFIRMADO'),
     )
 
-    fechareserva = forms.DateField(widget=forms.widgets.Date(attrs={'type':'data'}), label='Fecha Reserva')
+    fechareserva = forms.DateField(widget=forms.widgets.DateInput(attrs={'type':'data'}), label='Fecha Reserva')
     horareserva = forms.TimeField(widget=forms.widgets.TimeInput(attrs={'type': 'time', 'format':'%H:%M'}), label='Hora Reserva')
     observaciones = forms.CharField(widget=forms.Textarea(attrs={'rows':4, 'cols':50}))
     cantidadpersonas = forms.IntegerField(label='Cantidad de Personas')
 
     #Estado Reserva
 
-    estadoReservaId = forms.ModelChoiceField(queryset=TipoReserva.objects.all(), label='Fecha Reserva')
+    estadoReservaId = forms.ModelChoiceField(queryset=EstadReserva.objects.all(), label='Fecha Reserva')
     estadoReservaId.widget.attrs['class'] = 'form-select'
 
     #Tipo de Reserva

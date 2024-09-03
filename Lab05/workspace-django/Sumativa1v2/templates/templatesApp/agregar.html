@@ -19,12 +19,12 @@
     <div class="alert alert-info display-4 text-center">ADMINISTRAION DE RESERVAS</div>
 
     <form method="POST">
-        <table class="table">
-            {form}
+        <table class="table table-bordered">
+            {{form}}
             {%csrf_token%}
             <tr>
-                <td colspan="2">
-                    <input type="submit" class="btn btn-succes float-end" value="Guardar">
+                <td>
+                    <input type="submit" class="btn btn-success float-end" value="Guardar">
                 </td>
             </tr>
 

@@ -16,7 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from App import views
 
 urlpatterns = [
+    path('', views.agregarReserva),
+    path('eliminarReserva/<int:id>', views.eliminarReserva),
+    path('actualizarReserva/<int:id>', views.actualizarReserva),
     path('admin/', admin.site.urls),
 ]

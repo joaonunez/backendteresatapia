@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 
 # Create your views here.
-from models import Reserva
-from forms import ReservaForm
+from .models import Reserva
+from .forms import ReservaForm
 
 def agregarReserva(request):
     form = ReservaForm()
@@ -31,4 +31,6 @@ def actualizarReserva(request, id):
             form.save()
             form = ReservaForm()
 
-    
+    reservas = Reserva.objects.all()
+    data = {'form': form, 'reservas': reservas}
+    return render(request, 'templastesApp/agregar.html', data)
