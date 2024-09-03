@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'sumativa1v2',
         'USER': 'root',
-        'PASSWORD': 'admin',
+        'PASSWORD': '12345',
         'PORT': 3306
     }
 }

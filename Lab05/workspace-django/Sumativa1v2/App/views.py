@@ -5,16 +5,20 @@ from .models import Reserva
 from .forms import ReservaForm
 
 def agregarReserva(request):
-    form = ReservaForm()
     if request.method == 'POST':
         form = ReservaForm(request.POST)
         if form.is_valid():
             form.save()
-            form = ReservaForm()
+            return redirect('/')
+        else:
+            print(form.errors)  
+    else:
+        form = ReservaForm()
 
     reservas = Reserva.objects.all()
     data = {'form': form, 'reservas': reservas}
     return render(request, 'templatesApp/agregar.html', data)
+
 
 
 def eliminarReserva(request, id):
@@ -33,4 +37,4 @@ def actualizarReserva(request, id):
 
     reservas = Reserva.objects.all()
     data = {'form': form, 'reservas': reservas}
-    return render(request, 'templastesApp/agregar.html', data)
+    return render(request, 'templatesApp/agregar.html', data)
