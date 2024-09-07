@@ -5,32 +5,32 @@ from .forms import TrabajadorForm
 def inicio(request):
     return render(request, 'templatesApp/inicio.html')
 
-def listar_trabajador(request):
+def listarTrabajador(request):
     trabajadores = Trabajador.objects.all()
-    return render(request, 'templatesApp/listar_trabajador.html', {'trabajadores': trabajadores})
+    return render(request, 'templatesApp/listarTrabajador.html', {'trabajadores': trabajadores})
 
-def agregar_trabajador(request):
+def agregarTrabajador(request):
     if request.method == 'POST':
         form = TrabajadorForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('listar_trabajador')
+            return redirect('listarTrabajador')
     else:
         form = TrabajadorForm()
-    return render(request, 'templatesApp/agregar.html', {'form': form})
+    return render(request, 'templatesApp/agregarTrabajador.html', {'form': form})
 
-def eliminar_trabajador(request, id):
+def eliminarTrabajador(request, id):
     trabajador = get_object_or_404(Trabajador, id_trabajador=id)
     trabajador.delete()
-    return redirect('listar_trabajador')
+    return redirect('listarTrabajador')
 
-def actualizar_trabajador(request, id):
+def actualizarTrabajador(request, id):
     trabajador = get_object_or_404(Trabajador, id_trabajador=id)
     if request.method == 'POST':
         form = TrabajadorForm(request.POST, instance=trabajador)
         if form.is_valid():
             form.save()
-            return redirect('listar_trabajador')
+            return redirect('listarTrabajador')
     else:
         form = TrabajadorForm(instance=trabajador)
-    return render(request, 'templatesApp/actualizar.html', {'form': form})
+    return render(request, 'templatesApp/actualizarTrabajador.html', {'form': form})

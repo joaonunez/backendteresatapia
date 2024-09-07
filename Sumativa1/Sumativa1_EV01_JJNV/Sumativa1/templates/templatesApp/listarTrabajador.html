@@ -10,7 +10,7 @@
 </head>
 <body class="container mt-5">
     <h1 class="text-center">Listado de Trabajadores</h1>
-    <a href="{% url 'agregar_trabajador' %}" class="btn btn-primary mb-3">Agregar Trabajador</a>
+    <a href="{% url 'agregarTrabajador' %}" class="btn btn-primary mb-3">Agregar Trabajador</a>
     {% if trabajadores %}
         <table class="table">
             <thead>
@@ -42,10 +42,10 @@
                     <td>{{ trabajador.licencia_conducir }}</td>
                     <td>{{ trabajador.observaciones }}</td>
                     <td>
-                        <a href="{% url 'actualizar_trabajador' trabajador.id_trabajador %}" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="{% url 'actualizarTrabajador' trabajador.id_trabajador %}" class="btn btn-warning btn-sm">Editar</a>
                     </td>
                     <td>
-                        <a href="{% url 'eliminar_trabajador' trabajador.id_trabajador %}" class="btn btn-danger btn-sm">Eliminar</a>
+                        <a href="{% url 'eliminarTrabajador' trabajador.id_trabajador %}" class="btn btn-danger btn-sm">Eliminar</a>
                     </td>
                 </tr>
                 {% endfor %}
